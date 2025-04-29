@@ -1,12 +1,33 @@
-# React + Vite
+# Institut za Poslovni Konsalting
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Elegant and modern website for the *Institut za Poslovni Konsalting*, led by Saša Stefanović.  
+The website presents key consulting services, values, and vision of the institute through a clean and professional user interface.
 
-Currently, two official plugins are available:
+Built using [Vite](https://vitejs.dev/), [React](https://react.dev/), and [Tailwind CSS](https://tailwindcss.com/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React** — Component-based JavaScript UI library
+- **Vite** — Next-generation frontend tooling for lightning-fast dev experience
+- **Tailwind CSS** — Utility-first CSS framework for custom designs
+
+---
+
+## ⚙️ Getting Started
+
+To run this project locally:
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/your-repo-name.git
+
+# Navigate into the project directory
+cd your-repo-name
+
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
