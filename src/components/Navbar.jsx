@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { scrollToElement } from '../utils/scrollUtils';
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -32,29 +33,49 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleLinkClick = (e, id) => {
+    e.preventDefault();
+    setActiveItem(id);
+    setMobileMenuOpen(false);
+    scrollToElement(id); // 80px offset to account for the navbar height
+  };
+
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-500 ${
         scrolled 
           ? 'bg-white/95 backdrop-blur-sm shadow-lg py-2' 
-          : 'bg-[#1A2B4C]/30 backdrop-blur-sm py-3'
+          : 'bg-[#1A2B4C]/70 backdrop-blur-sm py-3'
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 lg:px-12">
         <div className="flex items-center justify-between lg:grid lg:grid-cols-3 lg:items-center">
           <div className="flex items-center">
-            <div className={`transition-all duration-500 ${scrolled ? 'scale-90' : 'scale-100'}`}>
+            <div className={`transition-all duration-500 ${scrolled ? 'scale-95' : 'scale-100'}`}>
               <a href="/" className="flex items-center">
-                <span className={`font-bold text-2xl md:text-3xl transition-all duration-500 ${
-                  scrolled ? 'text-[#1A2B4C]' : 'text-white'
-                }`}>
-                  IPK
-                </span>
-                <div className={`hidden md:block h-6 mx-3 w-px transition-opacity duration-500 ${
-                  scrolled ? 'bg-gray-300 opacity-100' : 'bg-white/50 opacity-0'
+                <div className="flex items-center">
+                  <svg 
+                    width="40" 
+                    height="40" 
+                    viewBox="0 0 100 100" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                    className={scrolled ? "text-[#1A2B4C]" : "text-white"}
+                  >
+                    <path d="M20 20H80V26H20V20Z" fill="currentColor"/>
+                    <path d="M16 26H84V32H16V26Z" fill="currentColor"/>
+                    
+                    <rect x="24" y="32" width="8" height="48" fill="currentColor"/>
+                    <rect x="38" y="32" width="8" height="48" fill="currentColor"/>
+                    <rect x="52" y="32" width="8" height="48" fill="currentColor"/>
+                    <rect x="66" y="32" width="8" height="48" fill="currentColor"/>
+                  </svg>
+                </div>
+                <div className={`hidden md:block h-8 mx-3 w-px transition-opacity duration-500 ${
+                  scrolled ? 'bg-gray-300 opacity-100' : 'bg-white/70 opacity-100'
                 }`}></div>
-                <span className={`hidden md:inline font-medium text-sm transition-all duration-500 ${
-                  scrolled ? 'text-gray-600 opacity-100' : 'text-white/80 opacity-0'
+                <span className={`hidden md:inline font-medium text-base transition-all duration-500 ${
+                  scrolled ? 'text-gray-600 opacity-100' : 'text-white opacity-100'
                 }`}>
                   Institut za poslovni konsalting
                 </span>
@@ -74,7 +95,7 @@ function Navbar() {
                 <div key={item.id} className="group relative whitespace-nowrap">
                   <a 
                     href={`#${item.id}`}
-                    onClick={() => setActiveItem(item.id)}
+                    onClick={(e) => handleLinkClick(e, item.id)}
                     className={`relative font-medium transition-colors duration-300 px-1 xl:px-2 py-1 ${
                       activeItem === item.id
                         ? scrolled ? 'text-[#1A2B4C]' : 'text-white'
@@ -94,13 +115,15 @@ function Navbar() {
           </div>
 
           <div className="flex items-center justify-end">
-            <button className={`hidden lg:block transition-all duration-300 px-4 xl:px-5 py-2 rounded-md whitespace-nowrap ${
-              scrolled 
-                ? 'bg-[#1A2B4C] text-white hover:bg-opacity-90' 
-                : 'bg-white text-[#1A2B4C] hover:bg-white/90'
-            }`}>
-              Konsultacije
-            </button>
+            <a href="#kontakt" onClick={(e) => handleLinkClick(e, 'kontakt')} className="hidden lg:block">
+              <button className={`hidden lg:block transition-all duration-300 px-4 xl:px-5 py-2 rounded-md whitespace-nowrap ${
+                scrolled
+                  ? 'bg-[#1A2B4C] text-white hover:bg-opacity-90'
+                  : 'bg-white text-[#1A2B4C] hover:bg-white/90'
+              }`}>
+                Konsultacije
+              </button>
+            </a>
             
             <button 
               className={`lg:hidden transition-colors duration-300 p-2 ${
@@ -149,22 +172,21 @@ function Navbar() {
                     ? scrolled ? 'text-[#1A2B4C] border-l-2 border-[#1A2B4C] pl-3' : 'text-white border-l-2 border-white pl-3'
                     : scrolled ? 'text-gray-600 hover:text-[#1A2B4C] pl-3' : 'text-white/90 hover:text-white pl-3'
                 }`}
-                onClick={() => {
-                  setActiveItem(item.id);
-                  setMobileMenuOpen(false);
-                }}
+                onClick={(e) => handleLinkClick(e, item.id)}
               >
                 {item.name}
               </a>
             ))}
             <div className="pt-2">
-              <button className={`transition-all duration-300 w-full px-5 py-2 rounded-md ${
-                scrolled 
-                  ? 'bg-[#1A2B4C] text-white hover:bg-opacity-90' 
-                  : 'bg-white text-[#1A2B4C] hover:bg-white/90'
-              }`}>
-                Konsultacije
-              </button>
+              <a href="#kontakt" onClick={(e) => handleLinkClick(e, 'kontakt')} className="block lg:hidden">
+                <button className={`transition-all duration-300 w-full px-5 py-2 rounded-md ${
+                  scrolled
+                    ? 'bg-[#1A2B4C] text-white hover:bg-opacity-90'
+                    : 'bg-white text-[#1A2B4C] hover:bg-white/90'
+                }`}>
+                  Konsultacije
+                </button>
+              </a>
             </div>
           </div>
         </div>

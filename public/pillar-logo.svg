@@ -1,0 +1,11 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Top of pillar (capital) -->
+  <path d="M20 20H80V26H20V20Z" fill="currentColor"/>
+  <path d="M16 26H84V32H16V26Z" fill="currentColor"/>
+  
+  <!-- Pillar columns -->
+  <rect x="24" y="32" width="8" height="48" fill="currentColor"/>
+  <rect x="38" y="32" width="8" height="48" fill="currentColor"/>
+  <rect x="52" y="32" width="8" height="48" fill="currentColor"/>
+  <rect x="66" y="32" width="8" height="48" fill="currentColor"/>
+</svg>

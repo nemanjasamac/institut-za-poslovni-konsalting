@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
-/* Hero section */
+html {
+  scroll-behavior: smooth;
+}
+
 @layer utilities {
   @keyframes fadeIn {
     from { opacity: 0; }
