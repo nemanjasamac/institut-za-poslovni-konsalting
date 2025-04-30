@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { scrollToElement } from '../utils/scrollUtils';
 
@@ -167,10 +168,27 @@ function Footer() {
                             © {currentYear} Institut za poslovni konsalting. Sva prava zadržana.
                         </div>
                         <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-gray-400">
-                            <a href="#" className="hover:text-white transition-colors">Politika privatnosti</a>
-                            <a href="#" className="hover:text-white transition-colors">Uslovi korišćenja</a>
-                            <a href="#" className="hover:text-white transition-colors">Pravna napomena</a>
-                            <a href="#" className="hover:text-white transition-colors">Mapa sajta</a>
+                            <Link to="/politika-privatnosti" className="hover:text-white transition-colors">
+                                Politika privatnosti
+                            </Link>
+                            <Link to="/uslovi-koriscenja" className="hover:text-white transition-colors">
+                                Uslovi korišćenja
+                            </Link>
+                            <Link to="/pravna-napomena" className="hover:text-white transition-colors">
+                                Pravna napomena
+                            </Link>
+                            <a href="/sitemap.xml" className="hover:text-white transition-colors">
+                                Mapa sajta
+                            </a>
+                            <a 
+                                href="https://samac.dev" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="hover:text-white transition-colors opacity-75 hover:opacity-100 flex items-center"
+                            >
+                                <span>Made by</span>
+                                <span className="font-semibold ml-1">samac.dev</span>
+                            </a>
                         </div>
                     </div>
                 </div>

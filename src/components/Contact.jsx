@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 
 function Contact() {
     const [formData, setFormData] = useState({
@@ -294,7 +295,7 @@ function Contact() {
                                                 />
                                             </div>
                                             <label htmlFor="policyAccepted" className="ml-2 block text-sm text-gray-600">
-                                                Slažem se sa <a href="#" className="text-[#1A2B4C] hover:underline">politikom privatnosti</a> i obradom podataka u svrhu odgovora na upit
+                                                Slažem se sa <Link to="/politika-privatnosti" className="text-[#1A2B4C] hover:underline">politikom privatnosti</Link> i obradom podataka u svrhu odgovora na upit
                                             </label>
                                         </motion.div>
 
